@@ -1,6 +1,6 @@
 /*!
  *
- * jQuery Cookie Plugin v1.1
+ * jQuery collagePlus Plugin v0.0.1
  * https://github.com/ed-lea/jquery-collagePlus
  *
  * Copyright 2012, Ed Lea twitter.com/ed_lea
