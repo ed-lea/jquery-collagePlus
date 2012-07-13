@@ -23,7 +23,8 @@ Getting Started
         vertical-align:bottom;
         
         /* hide the images until the plugin has run. the plugin will reveal the images*/
-        display:none;
+        opactiy:0;
+        
         }
         
 

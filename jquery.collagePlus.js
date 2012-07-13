@@ -16,8 +16,8 @@
 
 ;(function( $ ) {
 
-
   $.fn.collagePlus = function( options ) {
+  
   
     // Defaults
     var settings = $.extend( {
@@ -160,7 +160,6 @@
         var overBy = (row - settings.albumWidth) + (settings.padding*(obj.length-1)); 
 
 
-
         /*
         * 
         * How much do we change each image in this row by
@@ -261,10 +260,10 @@
             * Fade the image in
             *
             */
-            $(obj[i][0]).fadeIn(settings.fadeSpeed);
+            $(obj[i][0]).animate({opacity: '1'},{duration: settings.fadeSpeed});
+            //$(obj[i][0]).fadeIn(settings.fadeSpeed);
         }
-
-                
+    
     }
 
 
