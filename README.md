@@ -67,7 +67,7 @@ By default this behaviour not included in the plugin but you can use a few lines
      
     var resizeTimer = null;
     $(window).bind('resize', function() {
-        // hode all the images until we resize them
+        // hide all the images until we resize them
         $('.Collage img').css("opacity", 0);
         // set a timer to re-apply the plugin
         if (resizeTimer) clearTimeout(resizeTimer);
