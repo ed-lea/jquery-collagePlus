@@ -51,3 +51,26 @@ You may want to run the plugin with an image loader like https://github.com/desa
     });
 
 
+Browser Resize
+--------------
+
+By default this behaviour not included in the plugin but you can use a few lines of js to reload the images if the user resizes the browser window
+
+
+    function collage() {
+        $('.Collage').collagePlus(
+            {
+                'fadeSpeed' : 2000
+            }
+        );
+    };
+     
+    var resizeTimer = null;
+    $(window).bind('resize', function() {
+        // hode all the images until we resize them
+        $('.Collage img').css("opacity", 0);
+        // set a timer to re-apply the plugin
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(collage, 200);
+    });
+
