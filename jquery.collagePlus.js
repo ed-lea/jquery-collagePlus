@@ -34,7 +34,7 @@
     }, options);
 
     return this.each(function() {
-        
+
         /*
         * 
         * set up vars
@@ -50,22 +50,38 @@
 
         settings.images.each(
             function(index){
-
             
+                /*
+                * 
+                * Cache selector
+                *
+                */
+                var $this = $(this);
+                
+                
                 /*
                 * 
                 * get the current image size
                 *
                 */
-                var w = $(this).width();
-                var h = $(this).height();
+                var w = (typeof $this.data("width") != 'undefined') ? $this.data("width") : $this.width();
+                var h = (typeof $this.data("height") != 'undefined') ? $this.data("height") : $this.height();
                 
 
+                /*
+                * 
+                * store the original size for resize events
+                *
+                */
+                $this.data("width", w);
+                $this.data("height", h);
+           
+                
 
                 /*
                 * 
                 * caculate the w/h based on target height
-                * this is out ideal size, but later we'll resize to make it fit
+                * this is our ideal size, but later we'll resize to make it fit
                 *
                 */
                 var nw = Math.ceil(w/h*settings.targetHeight);
@@ -136,6 +152,7 @@
                 if ( settings.images.length-1 == index && elements.length != 0){
                     resizeRow(elements, row, settings);
                 }
+
             }
         );
         
@@ -254,14 +271,13 @@
             
             $(obj[i][0]).css("padding-bottom", settings.padding + "px");
             
-            
             /*
             * 
             * Fade the image in
             *
             */
             $(obj[i][0]).animate({opacity: '1'},{duration: settings.fadeSpeed});
-            //$(obj[i][0]).fadeIn(settings.fadeSpeed);
+
         }
     
     }

@@ -4,6 +4,12 @@ jquery-collagePlus
 Create an image gallery like Google+ Albums
 
 
+JSFiddle Example
+----------------
+http://jsfiddle.net/edlea/uZv3n/
+
+
+
 Basic Usage
 -----------
 
