@@ -151,6 +151,12 @@
                 */
                 if ( settings.images.length-1 == index && elements.length != 0){
                     resizeRow(elements, row, settings);
+                    
+                    // reset our row
+                    delete row;
+                    delete elements;
+                    row         = 0;
+                    elements    = [];
                 }
 
             }
@@ -258,6 +264,14 @@
             */
             $(obj[i][0]).height(fh);
             
+            
+            /*
+            * 
+            * On window resize we need to clear the padding
+            *
+            */
+            $(obj[i][0]).css("padding-bottom", "0px");
+            $(obj[i][0]).css("padding-right", "0px");
             
             
             /*
