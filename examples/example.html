@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+  
+    <style type="text/css" media="all">
+    html body{
+        margin:0;
+        padding:0;
+        }
+    .Image_Wrapper{
+        opacity:0;
+        }
+    .Collage{
+        margin:0 auto;
+        }
+        
+    .Image_Wrapper_Inside{
+
+        }
+    .Caption{
+        font-size:14px;
+        font-weight:arial;
+        }
+        .Caption_Content{
+            /* padding:10px; */
+            color:#FFF;
+            padding:20px;
+            }
+    </style>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="../jquery.collagePlus.js"></script>
+  <script src="../extras/jquery.removeWhitespace.js"></script>
+  <script src="../extras/jquery.collageCaption.js"></script>
+  
+  <script type="text/javascript">
+    $(window).load(function () {
+        $(document).ready(function(){
+            collage();
+        });
+    });
+    
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
+            {
+                'fadeSpeed' : 2000,
+                'targetHeight' : 200
+            }
+        ).collageCaption();
+
+    };
+     
+    var resizeTimer = null;
+    $(window).bind('resize', function() {
+        // hode all the images until we resize them
+        $('.Collage .Image_Wrapper').css("opacity", 0);
+        // set a timer to re-apply the plugin
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(collage, 200);
+    });
+
+  </script>
+</head>
+<body>
+
+
+   <!--
+ <div class="Collage"><img src="http://www.devurl.co.uk/collagePlus/9.jpeg"><img src="http://www.devurl.co.uk/collagePlus/1.png"><img src="http://www.devurl.co.uk/collagePlus/2.png"><img src="http://www.devurl.co.uk/collagePlus/3.png"><img src="http://www.devurl.co.uk/collagePlus/4.png"><img src="http://www.devurl.co.uk/collagePlus/5.png"><img src="http://www.devurl.co.uk/collagePlus/6.png"><img src="http://www.devurl.co.uk/collagePlus/7.png"><img src="http://www.devurl.co.uk/collagePlus/8.png"><img src="http://www.devurl.co.uk/collagePlus/10.jpeg"></div>
+
+-->
+
+    <div class="Collage">
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/9.jpeg"></a>
+        </div>
+
+        <div class="Image_Wrapper">
+            <a><img src="http://www.devurl.co.uk/collagePlus/1.png"></a>
+        </div>
+
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/2.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it This is some data &lt;u&gt;with&lt;/u&gt; html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it This is some data &lt;u&gt;with&lt;/u&gt; html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/3.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it This is some data &lt;u&gt;with&lt;/u&gt; html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/4.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/5.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it This is some data &lt;u&gt;with&lt;/u&gt; html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/6.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it This is some data &lt;u&gt;with&lt;/u&gt; html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/7.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/8.png"></a>
+        </div>
+    
+        <div class="Image_Wrapper" data-caption=
+        "This is some data &lt;u&gt;with&lt;/u&gt; html in it">
+            <a><img src="http://www.devurl.co.uk/collagePlus/10.jpeg"></a>
+        </div>​
+    </div>
+
+</body>
+</html>

@@ -42,6 +42,10 @@ Ensure you have no whitespace between your image tags for a clean grid.
     <img src="http://placehold.it/350x150"><img src="http://placehold.it/400x300"><img src="http://placehold.it/290x800">
     </div>
     
+Alternatively, use the jquery.clearWhitespace.js plugin in the extras directory to do this for you e.g.
+
+    $('.Collage').clearWhitespace().collagePlus();
+    
 
 You may want to run the plugin with an image loader like https://github.com/desandro/imagesloaded, alternatively you can try it with
 
@@ -68,7 +72,8 @@ By default this behaviour not included in the plugin but you can use a few lines
     var resizeTimer = null;
     $(window).bind('resize', function() {
         // hide all the images until we resize them
-        $('.Collage img').css("opacity", 0);
+        // set the element you are scaling i.e. the first child nodes of ```.Collage``` to opacity 0
+        $('.Collage .Image_Wrapper').css("opacity", 0);
         // set a timer to re-apply the plugin
         if (resizeTimer) clearTimeout(resizeTimer);
         resizeTimer = setTimeout(collage, 200);

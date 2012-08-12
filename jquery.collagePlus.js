@@ -1,6 +1,6 @@
 /*!
  *
- * jQuery collagePlus Plugin v0.0.1
+ * jQuery collagePlus Plugin v0.1.0
  * https://github.com/ed-lea/jquery-collagePlus
  *
  * Copyright 2012, Ed Lea twitter.com/ed_lea
@@ -19,6 +19,7 @@
 
 ;(function( $ ) {
 
+
   $.fn.collagePlus = function( options ) {
   
   
@@ -31,9 +32,11 @@
         // padding between the images
         'padding'         : 5,
         // object that contains the images to collage
-        'images'          : $('img', $(this)),
+        'images'          : $(this).children(),
         // how quickly you want images to fade in once ready can be in ms, "slow" or "fast"
-        'fadeSpeed'       : "fast"
+        'fadeSpeed'       : "fast",
+        // how the resized block should be displayed. inline-block by default so that it doesn't break the row
+        'display'         : "inline-block",
     }, options);
 
     return this.each(function() {
@@ -45,10 +48,9 @@
         */
         
         // track row width
-        var row         = 0;
-        
+        var row         = 0,
         // collect elements to be resized in current row
-        var elements    = [];
+            elements    = [];
 
 
         settings.images.each(
@@ -57,9 +59,13 @@
                 /*
                 * 
                 * Cache selector
+                * Even if first child is not an image the whole sizing is based on images
+                * so where we take measurements, we take them on the images
                 *
                 */
-                var $this = $(this);
+                var $this = $(this),
+                    $img  = ($this.is("img")) ? $this : $(this).find("img");
+                
                 
                 
                 /*
@@ -67,8 +73,8 @@
                 * get the current image size
                 *
                 */
-                var w = (typeof $this.data("width") != 'undefined') ? $this.data("width") : $this.width();
-                var h = (typeof $this.data("height") != 'undefined') ? $this.data("height") : $this.height();
+                var w = (typeof $img.data("width") != 'undefined') ? $img.data("width") : $img.width(),
+                    h = (typeof $img.data("height") != 'undefined') ? $img.data("height") : $img.height();
                 
 
                 /*
@@ -76,8 +82,8 @@
                 * store the original size for resize events
                 *
                 */
-                $this.data("width", w);
-                $this.data("height", h);
+                $img.data("width", w);
+                $img.data("height", h);
            
                 
 
@@ -87,8 +93,8 @@
                 * this is our ideal size, but later we'll resize to make it fit
                 *
                 */
-                var nw = Math.ceil(w/h*settings.targetHeight);
-                var nh = Math.ceil(settings.targetHeight);
+                var nw = Math.ceil(w/h*settings.targetHeight),
+                    nh = Math.ceil(settings.targetHeight);
 
 
                 /*
@@ -161,12 +167,10 @@
                     row         = 0;
                     elements    = [];
                 }
-
             }
         );
         
     });
-
 
 
     /*
@@ -175,6 +179,7 @@
     *
     */
     function resizeRow( obj, row, settings ) {
+
 
         /*
         * 
@@ -210,7 +215,13 @@
         *
         */
         for (var i = 0; i < obj.length; i++) {
-            
+
+            /*
+            * 
+            * Cache the selector
+            *
+            */
+            $obj = $(obj[i][0]);
 
             /*
             * 
@@ -254,51 +265,57 @@
 
             /*
             * 
-            * Set the width of the image
+            * Set the width of the image and parent element
+            * if the resized element is not an image, we apply it to the child image also
             *
             */
-            $(obj[i][0]).width(fw);
-
+            $obj.width(fw);
+            if( $obj.not("img") ){
+                $obj.find("img").width(fw);
+            }
 
             /*
             * 
             * Set the height of the image
+            * if the resized element is not an image, we apply it to the child image also
             *
             */
-            $(obj[i][0]).height(fh);
-            
-            
-            /*
-            * 
-            * On window resize we need to clear the padding
-            *
-            */
-            $(obj[i][0]).css("padding-bottom", "0px");
-            $(obj[i][0]).css("padding-right", "0px");
-            
-            
-            /*
-            * 
-            * Apply the padding, but not to the last image in the row
-            *
-            */
-            if( i < obj.length - 1 ){
-                $(obj[i][0]).css("padding-right", settings.padding + "px");
+            $obj.height(fh);
+            if( $obj.not("img") ){
+                $obj.find("img").height(fh);
             }
             
-            $(obj[i][0]).css("padding-bottom", settings.padding + "px");
+            
+            /*
+            * 
+            * Set CSS properties for the partent object
+            *
+            */
+            var css = {
+                // Applying padding to element for the grid gap effect
+                'margin-bottom'     : settings.padding + "px",
+                'margin-right'      : (( i < obj.length - 1 ) ? settings.padding + "px" : "0px"),
+                // Set it to an inline-block by default so that it doesn't break the row
+                'display'           : settings.display,
+                // Set vertical alignment otherwise you get 4px extra padding
+                'vertical-align'    : "bottom",
+                // Hide the overflow to hide the caption
+                'overflow'          : "hidden"
+            }
+            $obj.css(css);
             
             /*
             * 
             * Fade the image in
             *
             */
-            $(obj[i][0]).animate({opacity: '1'},{duration: settings.fadeSpeed});
+            $obj.animate({opacity: '1'},{duration: settings.fadeSpeed});
 
         }
     
     }
 
+    
 
 
   };
