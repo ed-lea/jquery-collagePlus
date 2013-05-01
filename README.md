@@ -42,9 +42,9 @@ Ensure you have no whitespace between your image tags for a clean grid.
     <img src="http://placehold.it/350x150"><img src="http://placehold.it/400x300"><img src="http://placehold.it/290x800">
     </div>
     
-Alternatively, use the jquery.clearWhitespace.js plugin in the extras directory to do this for you e.g.
+Alternatively, use the jquery.removeWhitespace.js plugin in the extras directory to do this for you e.g.
 
-    $('.Collage').clearWhitespace().collagePlus();
+    $('.Collage').removeWhitespace().collagePlus();
     
 
 You may want to run the plugin with an image loader like https://github.com/desandro/imagesloaded, alternatively you can try it with
