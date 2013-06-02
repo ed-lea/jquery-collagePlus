@@ -4,6 +4,11 @@ jquery-collagePlus
 Create an image gallery like Google+ Albums
 
 
+Example
+-------
+[![solarized dualmode](https://github.com/ed-lea/jquery-collagePlus/blob/master/support/images/0.2.0-preview.png)]
+
+
 JSFiddle Example
 ----------------
 http://jsfiddle.net/edlea/uZv3n/
