@@ -2,6 +2,7 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
+    <title>Collage Plus Example</title>
   
     <style type="text/css" media="all">
     html body{
@@ -9,12 +10,13 @@
         padding:0;
         }
     .Image_Wrapper{
-        opacity:0;
+        opacity:1;
         }
     .Collage{
         margin:0 auto;
+        padding:10px;
         }
-        
+
     .Image_Wrapper_Inside{
 
         }
@@ -29,8 +31,8 @@
             }
     </style>
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="../jquery.collagePlus.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+  <script src="../jquery.collagePlus.min.js"></script>
   <script src="../extras/jquery.removeWhitespace.js"></script>
   <script src="../extras/jquery.collageCaption.js"></script>
   
@@ -48,12 +50,11 @@
                 'targetHeight' : 200
             }
         ).collageCaption();
-
     };
      
     var resizeTimer = null;
     $(window).bind('resize', function() {
-        // hode all the images until we resize them
+        // hide all the images until we resize them
         $('.Collage .Image_Wrapper').css("opacity", 0);
         // set a timer to re-apply the plugin
         if (resizeTimer) clearTimeout(resizeTimer);
@@ -63,13 +64,6 @@
   </script>
 </head>
 <body>
-
-
-   <!--
- <div class="Collage"><img src="http://www.devurl.co.uk/collagePlus/9.jpeg"><img src="http://www.devurl.co.uk/collagePlus/1.png"><img src="http://www.devurl.co.uk/collagePlus/2.png"><img src="http://www.devurl.co.uk/collagePlus/3.png"><img src="http://www.devurl.co.uk/collagePlus/4.png"><img src="http://www.devurl.co.uk/collagePlus/5.png"><img src="http://www.devurl.co.uk/collagePlus/6.png"><img src="http://www.devurl.co.uk/collagePlus/7.png"><img src="http://www.devurl.co.uk/collagePlus/8.png"><img src="http://www.devurl.co.uk/collagePlus/10.jpeg"></div>
-
--->
-
     <div class="Collage">
         <div class="Image_Wrapper" data-caption=
         "This is some data &lt;u&gt;with&lt;/u&gt; html in it">
@@ -115,14 +109,62 @@
             <a><img src="http://placehold.it/320x500/542437/ffffff"></a>
         </div>
     
-        <div class="Image_Wrapper" data-caption=
-        "This is some data &lt;u&gt;with&lt;/u&gt; html in it">
+        <div class="Image_Wrapper" data-caption="This is some data &lt;u&gt;with&lt;/u&gt; html in it">
             <a><img src="http://placehold.it/450x300/53777A/ffffff"></a>
-        </div>​
+        </div>​<div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-1.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-10.jpg" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-9.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-8.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-7.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-6.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-5.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-4.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-3.png" />
+            </a>
+        </div>
+        <div class="Image_Wrapper">
+            <a href="http://edlea.com">
+                <img src="../support/images/ed-lea-dribbble-2.png" />
+            </a>
+        </div>
     </div>
     
     
-    <p style="font-family:arial;color:#999;font-size:12px;>Credits: Dynamic placeholder images by <a href="http://placehold.it/">http://placehold.it/</a> and colour schemes <a href="http://www.colourlovers.com/palette/92095/Giant_Goldfish">Giant Goldfish</a> and <a href="http://www.colourlovers.com/palette/694737/Thought_Provoking">Thought Provoking</a></p>
+    <p style="font-family:arial;color:#999;font-size:12px;">Credits: Dynamic placeholder images by <a href="http://placehold.it/">http://placehold.it/</a> and colour schemes <a href="http://www.colourlovers.com/palette/92095/Giant_Goldfish">Giant Goldfish</a> and <a href="http://www.colourlovers.com/palette/694737/Thought_Provoking">Thought Provoking</a></p>
 
 </body>
 </html>
