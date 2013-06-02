@@ -6,7 +6,7 @@ Create an image gallery like Google+ Albums
 
 Example
 -------
-[![solarized dualmode](https://github.com/ed-lea/jquery-collagePlus/blob/master/support/images/0.2.0-preview.png)]
+[![solarized dualmode](https://raw.github.com/ed-lea/jquery-collagePlus/master/support/images/0.2.0-preview.png)]
 
 
 JSFiddle Example
