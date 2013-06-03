@@ -3,6 +3,8 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
@@ -10,7 +12,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>jQuery CollagePlus - and image gallery plugin by Ed Lea</title>
+    <title>jQuery CollagePlus - an image gallery plugin by Ed Lea</title>
   </head>
 
   <body>
@@ -18,8 +20,8 @@
       <div class="inner">
 
         <header>
-          <h1>jQuery CollagePlus - and image gallery plugin</h1>
-          <h2>Create an image gallery like Google+ Albums</h2>
+          <h1>CollagePlus</h1>
+          <h2 class="subtitle">An image gallery plugin for jQuery</h2>
         </header>
 
         <section id="downloads" class="clearfix">
@@ -31,26 +33,48 @@
         <hr>
 
         <section id="main_content">
-          <h1>
-<a name="jquery-collageplus" class="anchor" href="#jquery-collageplus"><span class="octicon octicon-link"></span></a>jquery-collagePlus</h1>
+          <p>
+            <a name="jquery-collageplus" class="anchor" href="#jquery-collageplus"><span class="octicon octicon-link"></span></a>
+            This plugin for jQuery will arrange your images to fit exactly within a container.
+            You can define the padding between images, give the images css borders and define a target row height.
+          </p>
 
-<p>Create an image gallery like Google+ Albums</p>
 
-<h2>
-<a name="jsfiddle-example" class="anchor" href="#jsfiddle-example"><span class="octicon octicon-link"></span></a>JSFiddle Example</h2>
 
-<p><a href="http://jsfiddle.net/edlea/uZv3n/">http://jsfiddle.net/edlea/uZv3n/</a></p>
+
+        <h2><a name="jsfiddle-example" class="anchor" href="#jsfiddle-example"><span class="octicon octicon-link"></span></a>Example:</h2>
+
+        <figure><img src="https://raw.github.com/ed-lea/jquery-collagePlus/master/support/images/0.2.0-preview.png" /></figure>
+
+        <p>See a live example on jsfiddle: <a href="http://jsfiddle.net/edlea/uZv3n/">http://jsfiddle.net/edlea/uZv3n/</a></p>
 
 <h2>
 <a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
 
-<pre><code>$('.Collage').collagePlus();
+<pre><code>
+    // example HTML image gallery
+    &lt;div class=&quot;Collage&quot;&gt;
+        &lt;img src=&quot;example1.jpg&quot; /&gt;
+        &lt;img src=&quot;example2.jpg&quot; /&gt;
+        &lt;img src=&quot;example3.jpg&quot; /&gt;
+    &lt;/div&gt;
+
+    // collagePlus-ify it!
+    $('.Collage').collagePlus();
+
 </code></pre>
 
 <h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
 <pre><code>/* In your CSS */
+.Collage{
+
+    /* define how much padding you want in between your images */
+    padding:10px;
+
+    }
+
 .Collage img{
 
     /* ensures padding at the bottom of the image is correct */
@@ -85,7 +109,7 @@
 <h2>
 <a name="browser-resize" class="anchor" href="#browser-resize"><span class="octicon octicon-link"></span></a>Browser Resize</h2>
 
-<p>By default this behaviour not included in the plugin but you can use a few lines of js to reload the images if the user resizes the browser window</p>
+<p>By default this behaviour is not included in the plugin but you can use a few lines of js to reload the images if the user resizes the browser window</p>
 
 <pre><code>function collage() {
     $('.Collage').collagePlus(
@@ -105,6 +129,35 @@ $(window).bind('resize', function() {
     resizeTimer = setTimeout(collage, 200);
 });
 </code></pre>
+
+            <h2><a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+            <p>
+                CollagePlus relies on all images being loaded before it can calculate the layout. It does not run off
+                image sizes specified in the DOM. If you have image sizes available in the DOM then you're probably better
+                off calculating the layout server-side (assuming that's where you got the image sizes from) and writing
+                the result directly to the HTML template you're generating.
+            </p>
+
+            <h2><a name="licence" class="anchor" href="#licence"><span class="octicon octicon-link"></span></a>License</h2>
+            <p>
+                Dual licensed under the MIT or GPL Version 2 licenses.<br />
+                http://www.opensource.org/licenses/mit-license.php<br />
+                http://www.opensource.org/licenses/GPL-2.0
+            </p>
+
+
+            <h2>Author</h2>
+            <p class="about-author clearfix">
+                <span class="avatar">
+                    <img src="http://www.gravatar.com/avatar/6e7c89e56a46d1a665ad80ca507a82e4.png" />
+                </span>
+
+                <span class="author">
+                    I'm <a href="http://edlea.com">Ed Lea</a>, visual and interaction designer.<br />
+                    Twitter: <a href="http://twitter.com/ed_lea">@ed_lea</a>
+                </span>
+
+            </p>
         </section>
 
         <footer>

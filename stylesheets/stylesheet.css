@@ -51,16 +51,16 @@ body {
   font-size: 1em;
   line-height: 1.5; 
   background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   color: #6d6d6d;
 }
 
 a {
-  color: #d5000d;
+  color: #09F;
 }
 a:hover {
-  color: #c5000c;
+  color: #09F;
 }
 
 header {
@@ -69,10 +69,10 @@ header {
 }
 
 header h1 {
-  font-family: 'Chivo', 'Helvetica Neue', Helvetica, Arial, serif; font-weight: 900;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, serif; font-weight: 900;
   letter-spacing: -1px;
   font-size: 48px;
-  color: #303030;
+  color: rgb(44, 51, 58);
   line-height: 1.2;
 }
 
@@ -247,7 +247,7 @@ h1 {
 h2 {
   font-size: 22px;
   font-weight: bold;
-  color: #303030;
+  color: rgb(44, 51, 58);
   margin-bottom: 8px;
 } 
 
@@ -336,6 +336,41 @@ footer a:hover {
 .clearfix {display: inline-block;}
 * html .clearfix {height: 1%;}
 .clearfix {display: block;}
+
+/* #Override styles
+================================================== */
+.subtitle{
+    font-size: 2em;
+    line-height: 1.2em;
+    font-weight: normal;
+    color: rgb(121, 127, 136);
+    }
+.about-author{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.avatar{
+    display:block;
+    margin: 0;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    background-position: center center;
+    background-size: 80px 80px;
+    width: 80px;
+    height: 80px;
+    background-image: url(http://www.gravatar.com/avatar/6e7c89e56a46d1a665ad80ca507a82e4.png?s=80);
+    float:left;
+    }
+.avatar img{
+    display:none;
+    }
+.author{
+    margin-left:90px;
+    padding-top:15px;
+    display:block;
+}
 
 /* #Media Queries
 ================================================== */
