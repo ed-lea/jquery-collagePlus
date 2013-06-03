@@ -192,7 +192,7 @@
 
 
             /*
-             * Resize the images by the above % so that they'll fit in the ablum space
+             * Resize the images by the above % so that they'll fit in the album space
              */
             for (var i = 0; i < obj.length; i++) {
 
