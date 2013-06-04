@@ -118,17 +118,7 @@
                      * like css borders
                      *
                      */
-                    var nwFull = nw + imgParams['w'];
-
-
-                    /*
-                     *
-                     * what is the total width of our row so far
-                     * including padding, borders etc
-                     *
-                     */
-                    row += (( index < elements.length - 1 ) ? nwFull + settings.padding : nwFull);
-
+                    row += nw + imgParams['w'] + settings.padding;
 
                     /*
                      *
@@ -139,7 +129,8 @@
                     if( row > settings.albumWidth && elements.length != 0 ){
 
                         // call the method that calculates the final image sizes
-                        resizeRow(elements, row, settings);
+                        // remove one set of padding as it's not needed for the last image in the row
+                        resizeRow(elements, (row - settings.padding), settings);
 
                         // reset our row
                         delete row;
@@ -186,8 +177,12 @@
              * need to scale the images.
              *
              */
-            var albumWidthAdjusted  = settings.albumWidth - (settings.padding * (obj.length - 1)) - (obj.length * obj[0][3]),
-                overPercent         = albumWidthAdjusted / row;
+            var imageExtras         = (settings.padding * (obj.length - 1)) + (obj.length * obj[0][3]),
+                albumWidthAdjusted  = settings.albumWidth - imageExtras,
+                overPercent         = albumWidthAdjusted / (row - imageExtras),
+                // start tracking our width with know values that will make up the total width
+                // like borders and padding
+                trackWidth          = imageExtras;
 
 
 
@@ -196,17 +191,38 @@
              */
             for (var i = 0; i < obj.length; i++) {
 
-                var fw      = Math.floor(obj[i][1] * overPercent),
-                    fh      = Math.floor(obj[i][2] * overPercent),
+
+                var $obj        = $(obj[i][0]),
+                    fw          = Math.floor(obj[i][1] * overPercent),
+                    fh          = Math.floor(obj[i][2] * overPercent),
                 // if the element is the last in the row,
                 // don't apply right hand padding (this is our flag for later)
-                    isLast  = !!(( i < obj.length - 1 ));
+                    isNotLast   = !!(( i < obj.length - 1 ));
 
 
                 /*
-                 * cache selector
+                 *
+                 * Because we use % to calculate the widths, it's possible that they are
+                 * a few pixels out in which case we need to track this and adjust the
+                 * last image accordingly
+                 *
                  */
-                var $obj = $(obj[i][0]);
+                trackWidth += fw;
+
+
+                /*
+                 *
+                 * here we check if the combined images are exactly the width
+                 * of the parent. If not then we add a few pixels on to make
+                 * up the difference.
+                 *
+                 * This will alter the aspect ratio of the image slightly, but
+                 * by a noticable amount.
+                 *
+                 */
+                if(!isNotLast && trackWidth < settings.albumWidth){
+                    fw = fw + (settings.albumWidth - trackWidth);
+                }
 
 
                 /*
@@ -214,9 +230,15 @@
                  * Set the width of the image and parent element
                  * if the resized element is not an image, we apply it to the child image also
                  *
+                 * We need to check if it's an image as the css borders are only measured on
+                 * images. If the parent is a div, we need make the contained image smaller
+                 * to accommodate the css image borders.
+                 *
                  */
-                $obj.width(fw);
-                if( $obj.not("img") ){
+                if( $obj.is("img") ){
+                    $obj.width(fw);
+                }else{
+                    $obj.width(fw + obj[i][3]);
                     $obj.find("img").width(fw);
                 }
 
@@ -227,8 +249,10 @@
                  * if the resized element is not an image, we apply it to the child image also
                  *
                  */
-                $obj.height(fh);
-                if( $obj.not("img") ){
+                if( $obj.is("img") ){
+                    $obj.height(fh);
+                }else{
+                    $obj.height(fh + obj[i][4]);
                     $obj.find("img").height(fh);
                 }
 
@@ -238,7 +262,7 @@
                  * Apply the css extras like padding
                  *
                  */
-                applyModifications($obj, isLast, settings);
+                applyModifications($obj, isNotLast, settings);
 
 
                 /*
@@ -264,11 +288,11 @@
          * the css is applied to the <div>
          *
          */
-        function applyModifications($obj, isLast, settings) {
+        function applyModifications($obj, isNotLast, settings) {
             var css = {
                     // Applying padding to element for the grid gap effect
                     'margin-bottom'     : settings.padding + "px",
-                    'margin-right'      : (isLast) ? settings.padding + "px" : "0px",
+                    'margin-right'      : (isNotLast) ? settings.padding + "px" : "0px",
                     // Set it to an inline-block by default so that it doesn't break the row
                     'display'           : settings.display,
                     // Set vertical alignment otherwise you get 4px extra padding
