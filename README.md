@@ -9,7 +9,7 @@ Example
 -------
 ![Gallery Preview](https://raw.github.com/ed-lea/jquery-collagePlus/master/support/images/0.2.0-preview.png)
 
-Try the [live example](http://example.com/ "Live CollagePlus example") or play around with a [jsfiddle](http://jsfiddle.net/edlea/uZv3n/) version
+Try the [live example](http://collageplus.edlea.com/example.html "Live CollagePlus example") or play around with a [jsfiddle](http://jsfiddle.net/edlea/uZv3n/) version
 
 
 Basic Usage
