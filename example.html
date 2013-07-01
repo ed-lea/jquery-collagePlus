@@ -83,6 +83,7 @@
         $(window).load(function () {
             $(document).ready(function(){
                 collage();
+                $('.Collage').collageCaption();
             });
         });
 
@@ -92,7 +93,7 @@
                         'fadeSpeed' : 2000,
                         'targetHeight' : 200
                     }
-            ).collageCaption();
+            );
         };
 
         var resizeTimer = null;
