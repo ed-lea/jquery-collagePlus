@@ -21,6 +21,13 @@
         color:#09f;
         text-decoration:none;
     }
+    .ie-warning{
+        padding:10px;
+        color:#000;
+        background-color:#FFF;
+        margin:10px;
+        text-align:center;
+    }
 
     .Collage{
 
@@ -63,8 +70,14 @@
             padding:20px;
             }
     </style>
-  
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <!--<![endif]-->
+
+
   <script src="../jquery.collagePlus.js"></script>
   <script src="../extras/jquery.removeWhitespace.js"></script>
   <script src="../extras/jquery.collageCaption.js"></script>
