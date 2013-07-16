@@ -35,7 +35,12 @@
             // how quickly you want images to fade in once ready can be in ms, "slow" or "fast"
             'fadeSpeed'       : "fast",
             // how the resized block should be displayed. inline-block by default so that it doesn't break the row
-            'display'         : "inline-block"
+            'display'         : "inline-block",
+            // which effect you want to use for revealing the images (note CSS3 browsers only),
+            'effect'          : 'default',
+            // effect delays can either be applied per row to give the impression of descending appearance
+            // or horizontally, so more like a flock of birds changing direction
+            'direction'       : 'vertical'
         }, options);
 
         return this.each(function() {
@@ -49,7 +54,9 @@
                 // track row width by adding images, padding and css borders etc
             var row         = 0,
                 // collect elements to be re-sized in current row
-                elements    = [];
+                elements    = [],
+                // track the number of rows generated
+                rownum = 1;
 
 
             settings.images.each(
@@ -130,13 +137,14 @@
 
                         // call the method that calculates the final image sizes
                         // remove one set of padding as it's not needed for the last image in the row
-                        resizeRow(elements, (row - settings.padding), settings);
+                        resizeRow(elements, (row - settings.padding), settings, rownum);
 
                         // reset our row
                         delete row;
                         delete elements;
                         row         = 0;
                         elements    = [];
+                        rownum      += 1;
                     }
 
 
@@ -147,20 +155,21 @@
                      *
                      */
                     if ( settings.images.length-1 == index && elements.length != 0){
-                        resizeRow(elements, row, settings);
+                        resizeRow(elements, row, settings, rownum);
 
                         // reset our row
                         delete row;
                         delete elements;
                         row         = 0;
                         elements    = [];
+                        rownum      += 1;
                     }
                 }
             );
 
         });
 
-        function resizeRow( obj, row, settings ) {
+        function resizeRow( obj, row, settings, rownum) {
 
             /*
              *
@@ -267,10 +276,22 @@
 
                 /*
                  *
-                 * Fade the image in
+                 * Assign the effect to show the image
+                 * Default effect is using jquery and not CSS3 to support more browsers
                  *
                  */
-                $obj.animate({opacity: '1'},{duration: settings.fadeSpeed});
+                if( settings.effect == 'default'){
+                    $obj.animate({opacity: '1'},{duration: settings.fadeSpeed});
+                } else {
+                    if(settings.direction == 'vertical'){
+                        var sequence = (rownum <= 10  ? rownum : 10);
+                    } else {
+                        var sequence = (i <= 9  ? i+1 : 10);
+                    }
+
+                    $obj.addClass(settings.effect);
+                    $obj.addClass("effect-duration-" + sequence);
+                }
             }
 
 
