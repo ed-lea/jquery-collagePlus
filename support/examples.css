@@ -15,7 +15,7 @@ a{
 }
 .header{
     padding:0;
-    background-color: #FFF;
+    background-color: #272D35;
 }
 .header h1{
     font-size: 14px;
@@ -25,9 +25,15 @@ a{
     margin:0;
     padding:10px;
 }
+.header h1 a{
+    color:#41505A;
+}
+.header h1 a:hover{
+    color:#09F;
+}
 .header nav{
     background-color:rgb(65, 68, 75);
-    padding:40px 10px;
+    padding:40px;
     border-bottom:1px solid #CCC;
     margin-bottom:0px;
 }
@@ -51,6 +57,10 @@ a.return{
     padding:12px 10px 10px 10px;
     float:right;
     text-transform: uppercase;
+    color:#41505A;
+}
+a.return:hover{
+    color:#09F;
 }
 .footnote{
     color:#999;
