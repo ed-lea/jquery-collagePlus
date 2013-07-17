@@ -1,0 +1,111 @@
+/*
+This CSS is really just for this demo page
+But take a look at the comments to see how I set padding
+and borders on the images
+*/
+html body{
+    margin:0;
+    padding:0;
+    background-color:rgb(230, 230, 230);
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a{
+    color:#09F;
+    text-decoration:none;
+}
+.header{
+    padding:0;
+    background-color: #272D35;
+}
+.header h1{
+    font-size: 14px;
+    color: rgb(164, 177, 190);
+    display:inline-block;
+    font-weight:bold;
+    margin:0;
+    padding:10px;
+}
+.header h1 a{
+    color:#41505A;
+}
+.header h1 a:hover{
+    color:#09F;
+}
+.header nav{
+    background-color:rgb(65, 68, 75);
+    padding:40px;
+    border-bottom:1px solid #CCC;
+    margin-bottom:0px;
+}
+.header nav a{
+    display: inline-block;
+    padding: 4px 6px;
+    margin-right:10px;
+    background-color:#09F;
+    color:#FFF;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 3px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 1px rgba(0,0,0,0.1);
+    text-shadow:0 2px 1px rgba(0,0,20,0.1);
+}
+a.return{
+    font-size:12px;
+    display:inline-block;
+    padding:12px 10px 10px 10px;
+    float:right;
+    text-transform: uppercase;
+    color:#41505A;
+}
+a.return:hover{
+    color:#09F;
+}
+.footnote{
+    color:#999;
+    padding:10px;
+    font-size:12px;
+}
+.Collage{
+
+    /*This is where you set the padding you want between the images*/
+    padding:10px;
+
+}
+.Collage img{
+    margin:0;
+    padding:0;
+    display:inline-block;
+    vertical-align:bottom;
+    opacity:1;
+
+    /*This is where you set the border you want for the image*/
+    border:6px solid #FFF;
+}
+
+
+/* In this example, this is the main item being resized */
+.Image_Wrapper{
+    /* to get the fade in effect, set opacity to 0 on the first element within the gallery area */
+    opacity:0;
+    filter: alpha(opacity=0);
+
+    -moz-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.Caption{
+    font-size:14px;
+    font-weight:normal;
+    font-family:arial;
+}
+.Caption_Content{
+    /* padding:10px; */
+    color:#FFF;
+    padding:20px;
+}

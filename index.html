@@ -107,6 +107,65 @@
 </code></pre>
 
 <h2>
+    <a name="transitions" class="anchor" href="#transitions"><span class="octicon octicon-link"></span></a>Transitions</h2>
+
+<p>Version 0.3.0 introduced transitions which reveal the image grid using different CSS animations. These do not support less
+than IE10 but you can fall back to the default transition in that case.</p>
+
+<p>There are currently 6 different transitions (effect-1 to effect-6) which you can <a href="example.html">see in the examples</a>. You can also code your own
+CSS transition, <a href="http://tympanus.net/codrops/2013/07/02/loading-effects-for-grid-items-with-css-animations/" target="_blank">this codedrops article</a> is a good place to look - it inspired the ones in this plugin.</p>
+
+<p>All you need to do is include the "transitions.css" css file and pick which effect you want to use:</p>
+<pre><code>
+    $('.Collage').collagePlus(
+        {
+            'effect' : 'effect-1',
+        }
+    );
+</code></pre>
+<p>There is also an options for "direct". This applies the effect on a per row or per row item basis. So for "vertical" the images will appear from the top of the browser
+window downwards. For "horizontal" the images will appear from the left and move across the browser.</p>
+
+<h2>
+    <a name="all-options" class="anchor" href="#all-options"><span class="octicon octicon-link"></span></a>All the options</h2>
+
+
+<pre><code>
+    $('.Collage').collagePlus(
+        {
+            /*
+             * The ideal height you want your row to be. It won't set it exactly to this as
+             * plugin adjusts the row height to get the correct width
+             */
+            'targetHeight'    : 400,
+
+            /*
+             * how quickly you want images to fade in once ready can be in ms, "slow" or "fast"
+             * This is only used in the default fade in effect. Timing of the other effects is
+             * controlled in CSS
+             */
+            'fadeSpeed'       : "fast",
+
+            /*
+             * which effect you want to use for revealing the images (note CSS3 browsers only),
+             * Options are effect-1 to effect-6 but you can also code your own
+             * Default is the safest option for supporting older browsers
+             */
+            'effect'          : 'default',
+
+            /*
+             * vertical: effects applied per row to give the impression of descending appearance
+             * horizontal: effects applied in order of appearance in the row to give a horizontal appearance
+             */
+            'direction'       : 'vertical'
+        }
+    );
+</code></pre>
+
+
+
+
+<h2>
 <a name="browser-resize" class="anchor" href="#browser-resize"><span class="octicon octicon-link"></span></a>Browser Resize</h2>
 
 <p>By default this behaviour is not included in the plugin but you can use a few lines of js to reload the images if the user resizes the browser window</p>
