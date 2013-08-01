@@ -40,7 +40,10 @@
             'effect'          : 'default',
             // effect delays can either be applied per row to give the impression of descending appearance
             // or horizontally, so more like a flock of birds changing direction
-            'direction'       : 'vertical'
+            'direction'       : 'vertical',
+            // Sometimes there is just one image on the last row and it gets blown up to a huge size to fit the
+            // parent div width. To stop this behaviour, set this to true
+            'allowPartialLastRow' : false
         }, options);
 
         return this.each(function() {
@@ -191,7 +194,12 @@
                 overPercent         = albumWidthAdjusted / (row - imageExtras),
                 // start tracking our width with know values that will make up the total width
                 // like borders and padding
-                trackWidth          = imageExtras;
+                trackWidth          = imageExtras,
+                // guess whether this is the last row in a set by checking if the width is less
+                // than the parent width.
+                lastRow             = (row < settings.albumWidth  ? true : false);
+
+
 
 
 
@@ -201,12 +209,22 @@
             for (var i = 0; i < obj.length; i++) {
 
 
+
                 var $obj        = $(obj[i][0]),
                     fw          = Math.floor(obj[i][1] * overPercent),
                     fh          = Math.floor(obj[i][2] * overPercent),
                 // if the element is the last in the row,
                 // don't apply right hand padding (this is our flag for later)
                     isNotLast   = !!(( i < obj.length - 1 ));
+
+                /*
+                 * Checking if the user wants to not stretch the images of the last row to fit the
+                 * parent element size
+                 */
+                if(settings.allowPartialLastRow === true && lastRow === true){
+                   fw = obj[i][1];
+                   fh = obj[i][2];
+                }
 
 
                 /*
@@ -228,9 +246,15 @@
                  * This will alter the aspect ratio of the image slightly, but
                  * by a noticable amount.
                  *
+                 * If the user doesn't want full width last row, we check for that here
+                 *
                  */
                 if(!isNotLast && trackWidth < settings.albumWidth){
-                    fw = fw + (settings.albumWidth - trackWidth);
+                    if(settings.allowPartialLastRow === true && lastRow === true){
+                        fw = fw;
+                    }else{
+                        fw = fw + (settings.albumWidth - trackWidth);
+                    }
                 }
 
 
@@ -292,9 +316,9 @@
                     $obj.addClass(settings.effect);
                     $obj.addClass("effect-duration-" + sequence);
                 }
-            }
 
 
+        }
 
 
 
