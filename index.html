@@ -46,6 +46,9 @@
 
         <figure><img src="https://raw.github.com/ed-lea/jquery-collagePlus/master/support/images/0.2.0-preview.png" /></figure>
 
+
+
+
         <p>Play with a live example on jsfiddle: <a href="http://jsfiddle.net/edlea/uZv3n/">http://jsfiddle.net/edlea/uZv3n/</a> or take a look at the <a href="example.html">demo</a></p>
 
 <h2>
@@ -81,7 +84,7 @@
     vertical-align:bottom;
 
     /* hide the images until the plugin has run. the plugin will reveal the images*/
-    opactiy:0;
+    opacity:0;
 
     }
 </code></pre>
@@ -110,7 +113,7 @@
     <a name="transitions" class="anchor" href="#transitions"><span class="octicon octicon-link"></span></a>Transitions</h2>
 
 <p>Version 0.3.0 introduced transitions which reveal the image grid using different CSS animations. These do not support less
-than IE10 but you can fall back to the default transition in that case.</p>
+than IE10 but you can fall back to the default transition in that case (this is something you need to actively do, it's not a plugin behaviour).</p>
 
 <p>There are currently 6 different transitions (effect-1 to effect-6) which you can <a href="example.html">see in the examples</a>. You can also code your own
 CSS transition, <a href="http://tympanus.net/codrops/2013/07/02/loading-effects-for-grid-items-with-css-animations/" target="_blank">this codedrops article</a> is a good place to look - it inspired the ones in this plugin.</p>
@@ -123,11 +126,31 @@ CSS transition, <a href="http://tympanus.net/codrops/2013/07/02/loading-effects-
         }
     );
 </code></pre>
-<p>There is also an options for "direct". This applies the effect on a per row or per row item basis. So for "vertical" the images will appear from the top of the browser
-window downwards. For "horizontal" the images will appear from the left and move across the browser.</p>
+<p>There is also an options for "direction". This applies the effect on a per-row or per-image-in-row basis. So for "vertical" the images will appear from the top of the browser
+window downwards. For "horizontal" the images will appear from the left and move across the browser. It's a subtle animation difference.</p>
 
 <h2>
-    <a name="all-options" class="anchor" href="#all-options"><span class="octicon octicon-link"></span></a>All the options</h2>
+    <a name="last-row" class="anchor" href="#last-row"><span class="octicon octicon-link"></span></a>The Last Row - Image Scaling</h2>
+
+    <p>Sometimes the images on the last row will scale a lot if, for example, there is just one image and it needs to fill the parent
+    element width.</p>
+
+    <p>You can control this behaviour with:</p>
+
+<pre><code>
+    $('.Collage').collagePlus(
+        'allowPartialLastRow' : true
+    );
+</code></pre>
+
+    <p>And here is an example of the difference that setting makes:</p>
+    <figure><img src="https://raw.github.com/ed-lea/jquery-collagePlus/gh-pages/images/allowpartial-example.png" /></figure>
+
+
+
+
+<h2>
+    <a name="all-options" class="anchor" href="#all-options"><span class="octicon octicon-link"></span></a>All the [useful] options</h2>
 
 
 <pre><code>
@@ -158,6 +181,12 @@ window downwards. For "horizontal" the images will appear from the left and move
              * horizontal: effects applied in order of appearance in the row to give a horizontal appearance
              */
             'direction'       : 'vertical'
+
+            /*
+            * Sometimes there is just one image on the last row and it gets blown up to a huge size to fit the
+            * parent div width. To stop this behaviour, set this to true
+            */
+            'allowPartialLastRow'       : false
         }
     );
 </code></pre>
