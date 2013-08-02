@@ -23,7 +23,7 @@
     $.fn.collagePlus = function( options ) {
 
         // Defaults
-        var settings = $.extend( {
+        var settings = $.extend(options, {
             // the ideal height you want your images to be
             'targetHeight'    : 400,
             // width of the area the collage will be in
@@ -41,7 +41,7 @@
             // effect delays can either be applied per row to give the impression of descending appearance
             // or horizontally, so more like a flock of birds changing direction
             'direction'       : 'vertical'
-        }, options);
+        });
 
         return this.each(function() {
 
