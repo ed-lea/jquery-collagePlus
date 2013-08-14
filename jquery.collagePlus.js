@@ -80,7 +80,11 @@
 
                     /*
                      *
-                     * get the current image size
+                     * get the current image size. Get image size in this order
+                     *
+                     * 1. from <img> tag
+                     * 2. from data set from initial calculation
+                     * 3. after loading the image and checking it's actual size
                      *
                      */
                     var w = (typeof $img.data("width") != 'undefined') ? $img.data("width") : $img.width(),
@@ -306,7 +310,15 @@
                  *
                  */
                 if( settings.effect == 'default'){
-                    $obj.animate({opacity: '1'},{duration: settings.fadeSpeed});
+
+
+
+                    $obj.find("img").load(function(){
+                        $(this).parent().parent().animate({opacity: '1'},{duration: settings.fadeSpeed});
+                    });
+
+
+
                 } else {
                     if(settings.direction == 'vertical'){
                         var sequence = (rownum <= 10  ? rownum : 10);
