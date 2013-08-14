@@ -1,6 +1,6 @@
 /*!
  *
- * jQuery collagePlus Plugin v0.3.1
+ * jQuery collagePlus Plugin v0.3.2
  * https://github.com/ed-lea/jquery-collagePlus
  *
  * Copyright 2012, Ed Lea twitter.com/ed_lea
@@ -24,25 +24,25 @@
 
         var defaults = {
             // the ideal height you want your images to be
-            'targetHeight'    : 400,
+            'targetHeight'          : 400,
             // width of the area the collage will be in
-            'albumWidth'      : this.width(),
+            'albumWidth'            : this.width(),
             // padding between the images. Using padding left as we assume padding is even all the way round
-            'padding'         : parseFloat( this.css('padding-left') ),
+            'padding'               : parseFloat( this.css('padding-left') ),
             // object that contains the images to collage
-            'images'          : this.children(),
+            'images'                : this.children(),
             // how quickly you want images to fade in once ready can be in ms, "slow" or "fast"
-            'fadeSpeed'       : "fast",
+            'fadeSpeed'             : "fast",
             // how the resized block should be displayed. inline-block by default so that it doesn't break the row
-            'display'         : "inline-block",
+            'display'               : "inline-block",
             // which effect you want to use for revealing the images (note CSS3 browsers only),
-            'effect'          : 'default',
+            'effect'                : 'default',
             // effect delays can either be applied per row to give the impression of descending appearance
             // or horizontally, so more like a flock of birds changing direction
-            'direction'       : 'vertical',
+            'direction'             : 'vertical',
             // Sometimes there is just one image on the last row and it gets blown up to a huge size to fit the
             // parent div width. To stop this behaviour, set this to true
-            'allowPartialLastRow' : false
+            'allowPartialLastRow'   : false
         };
 
         var settings = $.extend({}, defaults, options);
@@ -307,29 +307,35 @@
                  *
                  * Assign the effect to show the image
                  * Default effect is using jquery and not CSS3 to support more browsers
+                 * Wait until the image is loaded to do this
                  *
                  */
-                if( settings.effect == 'default'){
+                $obj
+                    .find("img")
+                    .load(function(target) {
+                    return function(){
+                        if( settings.effect == 'default'){
+                            target.animate({opacity: '1'},{duration: settings.fadeSpeed});
+                        } else {
+                            if(settings.direction == 'vertical'){
+                                var sequence = (rownum <= 10  ? rownum : 10);
+                            } else {
+                                var sequence = (i <= 9  ? i+1 : 10);
+                            }
 
-
-
-                    $obj.find("img").load(function(){
-                        $(this).parent().parent().animate({opacity: '1'},{duration: settings.fadeSpeed});
-                    });
-
-
-
-                } else {
-                    if(settings.direction == 'vertical'){
-                        var sequence = (rownum <= 10  ? rownum : 10);
-                    } else {
-                        var sequence = (i <= 9  ? i+1 : 10);
+                            target.addClass(settings.effect);
+                            target.addClass("effect-duration-" + sequence);
+                        }
                     }
-
-                    $obj.addClass(settings.effect);
-                    $obj.addClass("effect-duration-" + sequence);
-                }
-
+                    }($obj))
+                    /*
+                     * fix for cached or loaded images
+                     * For example if images are loaded in a window.load call we need to trigger
+                     * the load call again
+                     */
+                    .each(function() {
+                            if(this.complete) $(this).trigger('load');
+                    });
 
         }
 

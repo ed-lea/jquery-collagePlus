@@ -51,6 +51,13 @@ a{
     box-shadow: 0 3px 1px rgba(0,0,0,0.1);
     text-shadow:0 2px 1px rgba(0,0,20,0.1);
 }
+.Example_Details{
+    padding:20px;
+    color:#272D35;
+    font-size:14px;
+    background-color: #FFFFFF;
+    margin-top:0;
+}
 a.return{
     font-size:12px;
     display:inline-block;
