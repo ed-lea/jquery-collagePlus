@@ -51,6 +51,13 @@ a{
     box-shadow: 0 3px 1px rgba(0,0,0,0.1);
     text-shadow:0 2px 1px rgba(0,0,20,0.1);
 }
+.Example_Details{
+    padding:20px;
+    color:#272D35;
+    font-size:14px;
+    background-color: #FFFFFF;
+    margin-top:0;
+}
 a.return{
     font-size:12px;
     display:inline-block;
@@ -89,8 +96,6 @@ a.return:hover{
 .Image_Wrapper{
     /* to get the fade in effect, set opacity to 0 on the first element within the gallery area */
     opacity:0;
-    filter: alpha(opacity=0);
-
     -moz-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);
     box-shadow:0px 2px 4px rgba(0, 0, 0, 0.1);

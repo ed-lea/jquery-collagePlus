@@ -68,6 +68,38 @@
 </code></pre>
 
 <h2>
+  <a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Do You Know Your Image Sizes?</h2>
+
+<p>This plugin can work in two different ways:
+<ol>
+    <li>You <strong>don't know</strong> all the image sizes for the images you you want to display</li>
+    <li>You <strong>know</strong> the images sizes for the images you want to display</li>
+</ol>
+</p>
+<p>For case 1, you will need to load all images for the plugin to then measure them and calculate the resizing required to make the grid. A very basic example would be something like:</p>
+
+<pre><code>
+
+    $(window).load(function () {
+        $('.Collage').collagePlus();
+    });
+
+</code></pre>
+
+<p>This ensures that all images are loaded before running the plugin. The downside of this method is that it takes a while for anything to appear on the screen. The benefit is that if
+you are loading images from another source that does not specify image sizes, the plugin will still work.</p>
+
+<p>However, if you know the image sizes (case 2), i.e.</p>
+<pre><code>
+    &lt;img src="example.jpg" width="400" height="300" /&gt;
+
+</code></pre>
+
+<p>Then you do not need to wait for the images to load before running the plugin (so you can forget about <code>$(window).load(...</code>.
+    This calculates the grid and then reveals the images as they are loaded. <a href="example-size-in-tag.html" target="_blank">See this example</a>.</p>
+<p>Of course, if you know the image sizes then it's probably better to calculate the grid server-side... but you can be lazy and use this plugin instead :)</p>
+
+<h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
 <pre><code>/* In your CSS */
