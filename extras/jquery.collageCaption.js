@@ -1,6 +1,6 @@
 /*!
  *
- * jQuery collageCaption Plugin v0.1.0
+ * jQuery collageCaption Plugin v0.1.1
  * extra for collagePlus plugin
  * https://github.com/ed-lea/jquery-collagePlus
  *
@@ -25,7 +25,7 @@
   
   
     // Defaults
-    var settings = $.extend( {
+    var defaults = {
         // object that contains the images to collage
         'images'          : $(this).children(),
         // colour for the caption background
@@ -35,8 +35,10 @@
         // speed of the reveal / hide animation
         'speed'           : 100,
         // css class for the caption wrapper
-        'class'           : "Caption"
-    }, options);
+        'cssClass'           : "Caption"
+    };
+
+    var settings = $.extend({}, defaults, options);
 
     return this.each(function() {
 
@@ -76,9 +78,9 @@
                 * The HTML to append to the containing element
                 *
                 */
-                var html = '<div class="' + settings.class + '" style="position:relative;"><div class="Caption_Background" style="background-color:' + 
-                            settings.background + ';opacity:' + 
-                            settings.opacity + ';position:relative;top:0;"></div><div class="Caption_Content" style="position:relative;">' + 
+                var html = '<div class="' + settings.cssClass + '" style="position:relative;"><div class="Caption_Background" style="background-color:' +
+                            settings.background + ';opacity:' +
+                            settings.opacity + ';position:relative;top:0;"></div><div class="Caption_Content" style="position:relative;">' +
                             $this.data("caption") + '</div></div>';
                 $this.append(html);
                 
@@ -87,7 +89,7 @@
                 * Cache the caption selectors
                 *
                 */
-                var $cap    =  $this.find("." + settings.class),
+                var $cap    =  $this.find("." + settings.cssClass),
                     $capbg  =  $this.find(".Caption_Background"),
                     $captxt =  $this.find(".Caption_Content");
                 
