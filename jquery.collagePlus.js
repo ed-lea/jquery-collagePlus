@@ -262,6 +262,13 @@
                     }
                 }
 
+                /*
+                 *
+                 * We'll be doing a few things to the image so here we cache the image selector
+                 *
+                 *
+                 */
+                var $img = ( $obj.is("img") ) ? $obj : $obj.find("img");
 
                 /*
                  *
@@ -273,11 +280,9 @@
                  * to accommodate the css image borders.
                  *
                  */
-                if( $obj.is("img") ){
-                    $obj.width(fw);
-                }else{
+                $img.width(fw);
+                if( $obj.not("img") ){
                     $obj.width(fw + obj[i][3]);
-                    $obj.find("img").width(fw);
                 }
 
 
@@ -287,11 +292,9 @@
                  * if the resized element is not an image, we apply it to the child image also
                  *
                  */
-                if( $obj.is("img") ){
-                    $obj.height(fh);
-                }else{
+                $img.height(fh);
+                if( $obj.not("img") ){
                     $obj.height(fh + obj[i][4]);
-                    $obj.find("img").height(fh);
                 }
 
 
@@ -310,8 +313,8 @@
                  * Wait until the image is loaded to do this
                  *
                  */
-                $obj
-                    .find("img")
+
+                $img
                     .load(function(target) {
                     return function(){
                         if( settings.effect == 'default'){
