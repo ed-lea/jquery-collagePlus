@@ -281,7 +281,7 @@
                  *
                  */
                 $img.width(fw);
-                if( $obj.not("img") ){
+                if( !$obj.is("img") ){
                     $obj.width(fw + obj[i][3]);
                 }
 
@@ -293,7 +293,7 @@
                  *
                  */
                 $img.height(fh);
-                if( $obj.not("img") ){
+                if( !$obj.is("img") ){
                     $obj.height(fh + obj[i][4]);
                 }
 
@@ -333,7 +333,7 @@
                     }($obj))
                     /*
                      * fix for cached or loaded images
-                     * For example if images are loaded in a window.load call we need to trigger
+                     * For example if images are loaded in a "window.load" call we need to trigger
                      * the load call again
                      */
                     .each(function() {
