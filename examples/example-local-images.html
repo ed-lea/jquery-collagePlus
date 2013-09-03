@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CollagePlus for jQuery Example</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../support/examples.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/transitions.css" media="all" />
+
+    <!--[if lt IE 9]>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
+    <!--<![endif]-->
+    <script src="http://localhost/~edleamacbook/jquery.2.0.3.min.js"></script>
+
+    <!--[if IE]>
+    <!--<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>-->
+    <![endif]-->
+
+    <script src="../jquery.collagePlus.js"></script>
+    <script src="../extras/jquery.removeWhitespace.js"></script>
+    <script src="../extras/jquery.collageCaption.js"></script>
+  
+    <script type="text/javascript">
+
+    // All images need to be loaded for this plugin to work so
+    // we end up waiting for the whole window to load in this example
+    $(window).load(function () {
+        $(document).ready(function(){
+            collage();
+            $('.Collage').collageCaption();
+        });
+    });
+
+
+    // Here we apply the actual CollagePlus plugin
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
+            {
+                'fadeSpeed'     : 2000,
+                'targetHeight'  : 200,
+                'effect'        : "default"
+            }
+        );
+    };
+
+    // This is just for the case that the browser window is resized
+    var resizeTimer = null;
+    $(window).bind('resize', function() {
+        // hide all the images until we resize them
+        $('.Collage .Image_Wrapper').css("opacity", 0);
+        // set a timer to re-apply the plugin
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(collage, 200);
+    });
+
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a class="return" href="http://collageplus.edlea.com">Back to plugin</a>
+        <h1><a href="http://collageplus.edlea.com">CollagePlus jQuery Plugin Example</a></h1>
+
+        <nav>
+            <a href="example.html">Default</a>
+            <a href="example1.html">Effect 1</a>
+            <a href="example2.html">Effect 2</a>
+            <a href="example3.html">Effect 3</a>
+            <a href="example4.html">Effect 4</a>
+            <a href="example5.html">Effect 5</a>
+            <a href="example6.html">Effect 6</a>
+            <a href="example-size-in-tag.html">Sizes In DOM</a>
+        </nav>
+    </header>
+
+    <div class="Collage effect-parent"><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-1.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-2.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-3.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-4.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-5.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-6.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-7.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-8.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-9.png" /></div><div class="Image_Wrapper"><img src ="../support/images/ed-lea-dribbble-10.jpg" /></div></div>
+    <!--<section class="Collage effect-parent"><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it"><a><img src="http://placehold.it/350x150/69D2E7/ffffff"></a></div><div class="Image_Wrapper"><a><img src="http://placehold.it/320x180/A7DBD8/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it"><a><img src="http://placehold.it/320x300/E0E4CC/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it This is some data <u>with</u>html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it This is some data <u>with</u>html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it"><a><img src="http://placehold.it/472x500/F38630/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it This is some data <u>with</u>html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it"><a><img src="http://placehold.it/540x360/FA6900/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it"><a><img src="http://placehold.it/800x600/ECD078/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it This is some data <u>with</u>html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it"><a><img src="http://placehold.it/400x120/D95B43/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it This is some data <u>with</u>html in it. Also a really long sentence with a <a href='http://www.bbc.co.uk'>link</a> in it"><a><img src="http://placehold.it/300x300/C02942/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it"><a><img src="http://placehold.it/320x500/542437/ffffff"></a></div><div class="Image_Wrapper" data-caption="This is some data <u>with</u>html in it"><a><img src="http://placehold.it/450x300/53777A/ffffff"></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-10.jpg"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-9.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-8.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-7.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-6.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-5.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-4.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-3.png"/></a></div><div class="Image_Wrapper"><a href="http://edlea.com"><img src="../support/images/ed-lea-dribbble-2.png"/></a></div></section>-->
+
+
+    <p class="footnote"><a href="http://ed-lea.github.io/jquery-collagePlus/">CollagePlus</a> for jQuery by <a href="http://twitter.com/ed_lea">@ed_lea</a><br />Credits: Dynamic placeholder images by <a href="http://placehold.it/">http://placehold.it/</a> and colour schemes <a href="http://www.colourlovers.com/palette/92095/Giant_Goldfish">Giant Goldfish</a> and <a href="http://www.colourlovers.com/palette/694737/Thought_Provoking">Thought Provoking</a><br />Reveal Effects from <a href="http://tympanus.net/codrops/2013/07/02/loading-effects-for-grid-items-with-css-animations/">Codedrops</a></p>
+
+</body>
+</html>
