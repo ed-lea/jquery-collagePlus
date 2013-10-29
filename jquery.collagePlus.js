@@ -315,7 +315,7 @@
                  */
 
                 $img
-                    .load(function(target) {
+                    .one('load', function (target) {
                     return function(){
                         if( settings.effect == 'default'){
                             target.animate({opacity: '1'},{duration: settings.fadeSpeed});
@@ -325,7 +325,10 @@
                             } else {
                                 var sequence = (i <= 9  ? i+1 : 10);
                             }
-
+                            /* Remove old classes with the "effect-" name */
+                            target.removeClass(function (index, css) {
+                                return (css.match(/\beffect-\S+/g) || []).join(' ');
+                            });
                             target.addClass(settings.effect);
                             target.addClass("effect-duration-" + sequence);
                         }
