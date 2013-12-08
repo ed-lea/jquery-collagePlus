@@ -1,6 +1,6 @@
 /*!
  *
- * jQuery collagePlus Plugin v0.3.2
+ * jQuery collagePlus Plugin v0.3.3
  * https://github.com/ed-lea/jquery-collagePlus
  *
  * Copyright 2012, Ed Lea twitter.com/ed_lea
@@ -22,31 +22,6 @@
 
     $.fn.collagePlus = function( options ) {
 
-        var defaults = {
-            // the ideal height you want your images to be
-            'targetHeight'          : 400,
-            // width of the area the collage will be in
-            'albumWidth'            : this.width(),
-            // padding between the images. Using padding left as we assume padding is even all the way round
-            'padding'               : parseFloat( this.css('padding-left') ),
-            // object that contains the images to collage
-            'images'                : this.children(),
-            // how quickly you want images to fade in once ready can be in ms, "slow" or "fast"
-            'fadeSpeed'             : "fast",
-            // how the resized block should be displayed. inline-block by default so that it doesn't break the row
-            'display'               : "inline-block",
-            // which effect you want to use for revealing the images (note CSS3 browsers only),
-            'effect'                : 'default',
-            // effect delays can either be applied per row to give the impression of descending appearance
-            // or horizontally, so more like a flock of birds changing direction
-            'direction'             : 'vertical',
-            // Sometimes there is just one image on the last row and it gets blown up to a huge size to fit the
-            // parent div width. To stop this behaviour, set this to true
-            'allowPartialLastRow'   : false
-        };
-
-        var settings = $.extend({}, defaults, options);
-
         return this.each(function() {
 
             /*
@@ -55,13 +30,25 @@
              *
              */
 
-                // track row width by adding images, padding and css borders etc
+            // track row width by adding images, padding and css borders etc
             var row         = 0,
-                // collect elements to be re-sized in current row
+            // collect elements to be re-sized in current row
                 elements    = [],
-                // track the number of rows generated
-                rownum = 1;
+            // track the number of rows generated
+                rownum = 1,
+            // needed for creating some additional defaults that are actually obtained
+            // from the dom, which maybe doesn't make them defaults ?!
+                $this = $(this);
 
+
+            // width of the area the collage will be in
+            $.fn.collagePlus.defaults.albumWidth    = $this.width();
+            // padding between the images. Using padding left as we assume padding is even all the way round
+            $.fn.collagePlus.defaults.padding       = parseFloat( $this.css('padding-left') );
+            // object that contains the images to collage
+            $.fn.collagePlus.defaults.images        = $this.children();
+
+            var settings = $.extend({}, $.fn.collagePlus.defaults, options);
 
             settings.images.each(
                 function(index){
@@ -394,6 +381,21 @@
 
     };
 
-
+    $.fn.collagePlus.defaults = {
+        // the ideal height you want your images to be
+        'targetHeight'          : 400,
+        // how quickly you want images to fade in once ready can be in ms, "slow" or "fast"
+        'fadeSpeed'             : "fast",
+        // how the resized block should be displayed. inline-block by default so that it doesn't break the row
+        'display'               : "inline-block",
+        // which effect you want to use for revealing the images (note CSS3 browsers only),
+        'effect'                : 'default',
+        // effect delays can either be applied per row to give the impression of descending appearance
+        // or horizontally, so more like a flock of birds changing direction
+        'direction'             : 'vertical',
+        // Sometimes there is just one image on the last row and it gets blown up to a huge size to fit the
+        // parent div width. To stop this behaviour, set this to true
+        'allowPartialLastRow'   : false
+    };
 
 })( jQuery );
