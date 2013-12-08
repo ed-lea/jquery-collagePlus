@@ -29,16 +29,7 @@
     // we end up waiting for the whole window to load in this example
     $(window).load(function () {
         $(document).ready(function(){
-
-            $('.Collage').removeWhitespace().collagePlus(
-                    {
-                        'fadeSpeed'     : 2000,
-                        'targetHeight'  : 200
-                    }
-            );
-
-
-           // collage();
+            collage();
             $('.Collage').collageCaption();
         });
     });
@@ -47,14 +38,14 @@
 
 
     // Here we apply the actual CollagePlus plugin
-//    function collage() {
-//        $('.Collage').removeWhitespace().collagePlus(
-//            {
-//                'fadeSpeed'     : 2000,
-//                'targetHeight'  : 200
-//            }
-//        );
-//    };
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
+            {
+                'fadeSpeed'     : 2000,
+                'targetHeight'  : 200
+            }
+        );
+    };
 
     // This is just for the case that the browser window is resized
     var resizeTimer = null;
