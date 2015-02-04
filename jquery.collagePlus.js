@@ -300,11 +300,13 @@
                  * Assign the effect to show the image
                  * Default effect is using jquery and not CSS3 to support more browsers
                  * Wait until the image is loaded to do this
+		 * Fix for Mootools: Instead of load replace it with custom trigger loadc
+		 * on load force a loadc trigger
                  *
                  */
 
                 $img
-                    .one('load', function (target) {
+                    .one('loadc', function (target) {
                     return function(){
                         if( settings.effect == 'default'){
                             target.animate({opacity: '1'},{duration: settings.fadeSpeed});
@@ -327,9 +329,17 @@
                      * fix for cached or loaded images
                      * For example if images are loaded in a "window.load" call we need to trigger
                      * the load call again
+		     * Fix for Mootools: Manually triggerring load event causes problem if mootools library is present
+		     * So instead of triggerring load we can trigger a custom event loadc and bind that trigger to either
+		     * image complete (cached) or image load (non-cached) event
                      */
                     .each(function() {
-                            if(this.complete) $(this).trigger('load');
+                        if(this.complete) $(this).trigger('loadc');
+                        else{
+                            $(this).one('load',function(){
+                                $(this).trigger('loadc');
+                            })
+                        }
                     });
 
         }
