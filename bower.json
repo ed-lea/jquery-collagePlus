@@ -1,0 +1,35 @@
+{
+  "name": "jquery-collagePlus",
+  "homepage": "https://github.com/ed-lea/jquery-collagePlus",
+  "version": "0.3.3",
+  "_release": "0.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.3",
+    "commit": "2085c672f14729da07a430a345789a9b2cf0e1be"
+  },
+  "_source": "git://github.com/ed-lea/jquery-collagePlus.git",
+  "_target": "~0.3.3",
+  "_originalSource": "jquery-collagePlus",
+  "_direct": true,
+  "authors": [
+    "ed-lea <edleaddesign@gmail.com>"
+  ],
+  "description": "Create an image gallery like Google+ Albums",
+  "main": "jquery.collagePlus.js",
+  "moduleType": [],
+  "keywords": [
+    "collage",
+    "jquery",
+    "image",
+    "gallery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
