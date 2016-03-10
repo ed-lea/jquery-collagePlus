@@ -249,8 +249,6 @@
                     }
                 }
 
-                fw--;
-
                 /*
                  *
                  * We'll be doing a few things to the image so here we cache the image selector
