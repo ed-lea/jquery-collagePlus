@@ -1,4 +1,4 @@
-##CollagePlus for jQuery
+## CollagePlus for jQuery
 
 Create an image gallery like Google+ Albums or Flickr profile pages. 
 
